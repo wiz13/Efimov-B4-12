@@ -27,10 +27,10 @@ def request_data():
     print("Регистрация нового пользователя")        
     first_name = input("Имя: ")
     last_name = input("Фамилия: ")
-    gender = input("Пол: ")
+    gender = input("Пол (Male, Female): ")
     email = input("Адрес электронной почты: ")
-    birthdate = input("Дата рождения: ")
-    height = input("Рост: ")
+    birthdate = input("Дата рождения (гггг-мм-дд): ")
+    height = input("Рост м. (в формате *.**): ")
         
     user = User(        
         first_name=first_name,
@@ -44,14 +44,15 @@ def request_data():
 
 def main():
     session = connect_db()    
-    mode = input("Добавить нового пользователя? 1-Да, не1-Нет: ")    
+    mode = input("Добавить нового пользователя? 1-Да, 0-Нет: ")    
+
     while int(mode) == 1 :
         user = request_data()
         session.add(user)
         session.commit()
         print("Спасибо, данные сохранены!")
-        mode = input("Добавить нового пользователя? 1-Да, не1-Нет: ")    
-    print("Тасфидания")
+        mode = input("Добавить нового пользователя? 1-Да, 0-Нет: ")    
+    print("Выход")
     
 if __name__ == "__main__":
     main()
